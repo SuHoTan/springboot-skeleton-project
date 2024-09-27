@@ -25,14 +25,15 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // csrf 비보호
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/login", "/register", "h2-console/**").permitAll() // 특정 경로는 인증 없이 접근 허용
+                        .requestMatchers("/login", "/register", "/h2-console/**").permitAll() // 특정 경로는 인증 없이 접근 허용
                         .anyRequest().authenticated() // 나머지 요청 인증 필요
                 )
                 .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 세션 미사용, JWT 관리
+                        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED) // 필요한 경우에만 세션 추가
                 )
                 .formLogin(form -> form
                         .loginPage("/login") // 로그인페이지 설정
+                        .defaultSuccessUrl("/index", true) // 로그인 성공 시 이동할 페이지 설정
                         .permitAll() // 누구나 접근
                 )
                 .logout(logout -> logout

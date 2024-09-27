@@ -1,13 +1,19 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:test;DATABASE_TO_UPPER=false;MODE=MYSQL # 데이터베이스 URL 설정, 대소문자 구분 및 MySQL 모드 활성화
     driver-class-name: org.h2.Driver
     username: sa
     password: password
   h2:
     console:
       enabled: true
+      path: /h2-console
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none # 데이터베이스 스키마 자동 생성/업데이트 비활성화 (validate, update, create, create-drop 중 선택 가능)
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl # 테이블 및 컬럼 이름을 명시한 대로 사용
     show-sql: true
+  sql:
+    init:
+      mode: always # SQL 스크립트가 항상 실행되도록 설정 (데이터베이스 초기화)
