@@ -25,7 +25,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // csrf 비보호
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/login", "/register", "/h2-console/**").permitAll() // 특정 경로는 인증 없이 접근 허용
+                        .requestMatchers("/login", "/register", "/h2-console/**", "/bootstrap5/**", "/css/**", "/js/**", "/images/**", "/layout/**").permitAll() // 정적 리소스 허용
                         .anyRequest().authenticated() // 나머지 요청 인증 필요
                 )
                 .sessionManagement(session -> session

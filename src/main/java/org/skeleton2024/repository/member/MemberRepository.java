@@ -1,5 +1,6 @@
-package org.skeleton2024.domain.member;
+package org.skeleton2024.repository.member;
 
+import org.skeleton2024.domain.member.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

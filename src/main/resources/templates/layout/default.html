@@ -1,0 +1,52 @@
+<!-- src/main/resources/templates/layout/default.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${pageTitle}">상업 웹사이트</title>
+    <link rel="stylesheet" th:href="@{/bootstrap5/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+</head>
+<body class="d-flex flex-column min-vh-100">
+<header>
+    <!-- 헤더 콘텐츠 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">상업 웹사이트</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">홈</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/about}">회사 소개</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/services}">서비스</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/contact}">연락처</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="row">
+        <main class="col">
+            <!-- 이곳에 동적으로 콘텐츠가 삽입됩니다 -->
+            <div layout:fragment="content">
+            </div>
+        </main>
+    </div>
+</div>
+
+<footer class="mt-auto bg-dark text-white py-3">
+    <div class="container text-center">
+        <p class="mb-0">상업 웹사이트 &copy; 2024</p>
+    </div>
+</footer>
+</body>
+</html>

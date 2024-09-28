@@ -2,7 +2,7 @@ package org.skeleton2024.security;
 
 import lombok.RequiredArgsConstructor;
 import org.skeleton2024.domain.member.Member;
-import org.skeleton2024.domain.member.MemberRepository;
+import org.skeleton2024.repository.member.MemberRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
