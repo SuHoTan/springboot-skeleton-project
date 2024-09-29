@@ -3,7 +3,7 @@ spring:
     url: jdbc:h2:mem:test;DATABASE_TO_UPPER=false;MODE=MYSQL # 데이터베이스 URL 설정, 대소문자 구분 및 MySQL 모드 활성화
     driver-class-name: org.h2.Driver
     username: sa
-    password: password
+    password:
   h2:
     console:
       enabled: true

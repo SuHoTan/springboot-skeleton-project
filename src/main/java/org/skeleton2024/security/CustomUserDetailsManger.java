@@ -1,5 +1,6 @@
 package org.skeleton2024.security;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.skeleton2024.domain.member.Member;
 import org.skeleton2024.repository.member.MemberRepository;
@@ -14,6 +15,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Getter
 public class CustomUserDetailsManger implements UserDetailsManager {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
@@ -27,9 +29,13 @@ public class CustomUserDetailsManger implements UserDetailsManager {
 
     @Override
     public void createUser(UserDetails userDetails) {
-        Member member = ((CustomUserDetails) userDetails).getMember();
-        member.setPassword(passwordEncoder.encode(member.getPassword()));
-        memberRepository.save(member);
+        if (userDetails instanceof CustomUserDetails customUserDetails) {
+            Member member = customUserDetails.getMember();
+            member.setPassword(passwordEncoder.encode(member.getPassword()));
+            memberRepository.save(member);
+        } else {
+            throw new IllegalArgumentException("Invalid UserDetails type");
+        }
     }
 
     @Override
